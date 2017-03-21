@@ -1,6 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
+const port = process.env.PORT || 3000;
 var app = express();
 //middlewares .
 
@@ -22,7 +23,7 @@ app.use((req, res, next)=>{
     next();
 });
 
-app.use((req,res)=>{
+app.use((req,res, next)=>{
     res.render('maintenance.hbs', {
         pageTitle: 'Website maintenance',
     });
@@ -53,6 +54,6 @@ app.get('/bad', (req, res)=>{
         errorMessage: 'unable to load page'
     });
 });
-app.listen(3000, ()=>{
-    console.log('Server running on port 3000');
+app.listen(port, ()=>{
+    console.log(`Server running on port ${port}`);
 });
