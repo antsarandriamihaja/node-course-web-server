@@ -23,11 +23,11 @@ app.use((req, res, next)=>{
     next();
 });
 
-app.use((req,res, next)=>{
-    res.render('maintenance.hbs', {
-        pageTitle: 'Website maintenance',
-    });
-});
+// app.use((req,res, next)=>{
+//     res.render('maintenance.hbs', {
+//         pageTitle: 'Website maintenance',
+//     });
+// });
 
 hbs.registerHelper('getCurrentYear', ()=>{
     return new Date().getFullYear();
@@ -52,6 +52,12 @@ app.get('/about', (req, res)=>{
 app.get('/bad', (req, res)=>{
     res.send({
         errorMessage: 'unable to load page'
+    });
+});
+
+app.get('/projects', (req, res)=>{
+    res.render('projects.hbs', {
+        pageTitle: 'Portfolio',    
     });
 });
 app.listen(port, ()=>{
